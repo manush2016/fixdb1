@@ -1,0 +1,11 @@
+<%= form_for(@configattribdetail) do |f| %>
+<% session[:configattrib_id]=@configattribdetail.configattrib_id %>
+<table>
+  <tr><td><% f.label :configattrib_id %></td><td><% f.text_field :configattrib_id %></td></tr>
+  <tr><td><%= f.label "Attribute Name" %></td><td><%= @configattrib.attribute_name %></td></tr>
+  <tr><td><%= f.label :log_time %></td><td><%= f.datetime_select :log_time, :disabled => true %></td></tr>
+  <tr><td><%= f.label :param1 %></td><td><%= f.text_field :param1 %></td></tr>
+  <tr><td><%= f.label :param2 %></td><td><%= f.text_field :param2, :disabled => true %></td></tr>
+  <tr><td><%= f.label :notified %></td><td><%= f.text_field :notified, :disabled => true %></td></tr>
+  <tr><td><%= f.submit %></td><tr>
+<% end %>

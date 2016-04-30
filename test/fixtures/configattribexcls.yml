@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  configattrib_id: 
+  param1: MyString
+  excludemonitor: MyString
+
+two:
+  configattrib_id: 
+  param1: MyString
+  excludemonitor: MyString

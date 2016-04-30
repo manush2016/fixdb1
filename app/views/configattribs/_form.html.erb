@@ -1,0 +1,19 @@
+<%= form_for(@configattrib) do |f| %>
+    <% session[:configdb_id]=@configattrib.configdb_id %>
+  <table>
+    <tr><td><% f.label :configdb_id %></td><td><%  f.text_field :configdb_id %></td></tr>
+    <tr><td><%= f.label :Location %></td><td><%=  @configdb.location %></td></tr>
+    <tr><td><%= f.label :attribute_name %></td><td><%= f.text_field :attribute_name %></td></tr>
+    <tr><td><%= f.label :monitor %></td><td><%= f.check_box :monitor, {}, 'Y', 'N' %></td></tr>
+    <tr><td><%= f.label :th_warning %></td><td><%= f.text_field :th_warning %></td></tr>
+    <tr><td><%= f.label :th_critical %></td><td><%= f.text_field :th_critical %></td></tr>
+    <tr><td><%= f.label :command %></td><td><%= f.text_area :command %></td></tr>
+    <tr><td><%= f.label :command_operand %></td><td><%= f.text_field :command_operand %></td></tr>
+    <tr><td><%= f.label :command_operator %></td><td><%= f.text_field :command_operator %></td></tr>
+    <tr><td><%= f.label :command_file_type %></td><td> <%= f.radio_button :command_file_type, 'DB', :checked => true %> DB
+        <%= f.radio_button :command_file_type, 'OS' %> OS
+    <tr><td><%= f.submit "Confirm" %></td></tr>
+  </table>
+<% end %>
+
+

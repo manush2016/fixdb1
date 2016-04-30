@@ -1,0 +1,26 @@
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @configdb.location %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @configdb.username %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @configdb.password %>
+</p>
+
+<p>
+  <strong>Monitor:</strong>
+  <%= @configdb.monitor %>
+</p>
+
+<%= link_to 'Edit', edit_configdb_path(@configdb) %> |
+<%= link_to 'Back', configdbs_path %>
+<%= link_to 'qq', configattribs_path %>

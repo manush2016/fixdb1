@@ -1,0 +1,2 @@
+<li><input type="checkbox" id="node-<%= i %>-<%= j %>-<%= k %>" /><label><input type="checkbox" unchecked disabled style="display:none;"/><span></span></label><label for="node-<%= i %>-<%= j %>-<%= k %>"><%= link_to "NEW ATTRIBUTE DETAILS", new_configattribdetail_path(:id => configattrib.id) %></label></li>
+                <% k+=1 %>

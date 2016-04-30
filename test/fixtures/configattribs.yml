@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  configdb_id: 
+  attribute_name: MyString
+  monitor: MyString
+  th_warning: MyString
+  th_critical: MyString
+  command: MyText
+  command_operand: MyString
+  command_operator: MyString
+  command_file_type: MyString
+
+two:
+  configdb_id: 
+  attribute_name: MyString
+  monitor: MyString
+  th_warning: MyString
+  th_critical: MyString
+  command: MyText
+  command_operand: MyString
+  command_operator: MyString
+  command_file_type: MyString

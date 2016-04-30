@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Configdb:</strong>
+  <%= @configattrib.configdb %>
+</p>
+
+<p>
+  <strong>Attribute name:</strong>
+  <%= @configattrib.attribute_name %>
+</p>
+
+<p>
+  <strong>Monitor:</strong>
+  <%= @configattrib.monitor %>
+</p>
+
+<p>
+  <strong>Th warning:</strong>
+  <%= @configattrib.th_warning %>
+</p>
+
+<p>
+  <strong>Th critical:</strong>
+  <%= @configattrib.th_critical %>
+</p>
+
+<p>
+  <strong>Command:</strong>
+  <%= @configattrib.command %>
+</p>
+
+<p>
+  <strong>Command operand:</strong>
+  <%= @configattrib.command_operand %>
+</p>
+
+<p>
+  <strong>Command operator:</strong>
+  <%= @configattrib.command_operator %>
+</p>
+
+<p>
+  <strong>Command file type:</strong>
+  <%= @configattrib.command_file_type %>
+</p>
+
+<%= link_to 'Edit', edit_configattrib_path(@configattrib) %> |
+<%= link_to 'Back', configattribs_path %>

@@ -1,0 +1,9 @@
+<%= form_for(@configdb) do |f| %>
+  <table>
+    <tr><td><%= f.label :location %></td><td><%= f.text_field :location %></td></tr>
+    <tr><td><%= f.label :username %></td><td><%= f.text_field :username %></td></tr>
+    <tr><td><%= f.label :password %></td><td><%= f.text_field :password %></td></tr>
+    <tr><td><%= f.label :monitor %></td><td><%= f.check_box :monitor, {}, 'Y', 'N' %></td></tr>
+    <tr><td><%= f.submit "Confirm" %></td></tr>
+  </table>
+<% end %>

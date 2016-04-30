@@ -1,0 +1,2 @@
+module ConfigattribdetailsHelper
+end

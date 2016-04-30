@@ -1,0 +1,2 @@
+module ConfigdbsHelper
+end

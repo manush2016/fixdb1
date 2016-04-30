@@ -1,0 +1,2 @@
+module ConfigattribmasterHelper
+end

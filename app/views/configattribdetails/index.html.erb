@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Configattribdetails</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Configattrib</th>
+      <th>Log time</th>
+      <th>Param1</th>
+      <th>Param2</th>
+      <th>Notified</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @configattribdetails.each do |configattribdetail| %>
+      <tr>
+        <td><%= configattribdetail.configattrib %></td>
+        <td><%= configattribdetail.log_time %></td>
+        <td><%= configattribdetail.param1 %></td>
+        <td><%= configattribdetail.param2 %></td>
+        <td><%= configattribdetail.notified %></td>
+        <td><%= link_to 'Show', configattribdetail %></td>
+        <td><%= link_to 'Edit', edit_configattribdetail_path(configattribdetail) %></td>
+        <td><%= link_to 'Destroy', configattribdetail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

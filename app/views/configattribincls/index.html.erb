@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Configattribincls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Configattrib</th>
+      <th>Param1</th>
+      <th>Th warning</th>
+      <th>Th critical</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @configattribincls.each do |configattribincl| %>
+      <tr>
+        <td><%= configattribincl.configattrib %></td>
+        <td><%= configattribincl.param1 %></td>
+        <td><%= configattribincl.th_warning %></td>
+        <td><%= configattribincl.th_critical %></td>
+        <td><%= link_to 'Show', configattribincl %></td>
+        <td><%= link_to 'Edit', edit_configattribincl_path(configattribincl) %></td>
+        <td><%= link_to 'Destroy', configattribincl, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Configattribincl', new_configattribincl_path %>

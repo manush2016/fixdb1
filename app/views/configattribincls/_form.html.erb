@@ -1,0 +1,22 @@
+<%= form_for(@configattribincl) do |f| %>
+  <% session[:configdb_id]=params[:configdb_id] %>
+  <% session[:configattrib_id]=params[:configattrib_id] %>
+  <% session[:param1]=params[:param1] %>
+  <% if params[:action]=="new" %>
+    <% @configattribincl.th_warning=Configattrib.where("id=?",params[:configattrib_id]).pluck(:th_warning)[0] %>
+    <% @configattribincl.th_critical=Configattrib.where("id=?",params[:configattrib_id]).pluck(:th_critical)[0] %>
+  <% end %>
+
+  <table>
+    <tr><td><% f.label :configattrib_id %></td><td><% params[:configattrib_id] %></td></tr>
+    <tr><td><%= f.label :param1 %></td><td><%= params[:param1] %></td></tr>
+    <tr><td><%= f.label :th_warning %></td><td><%= f.text_field :th_warning %></td></tr>
+    <tr><td><%= f.label :th_critical %></td><td><%= f.text_field :th_critical %></td></tr>
+    <% if params[:action]=="edit" %>
+    <tr><td><%= f.submit "Update Threshold" %></td></tr>
+    <tr><td><%= link_to "Reset To Default", @configattribincl, method: :delete %></td></tr>
+    <% else %>
+    <tr><td><%= f.submit "Set Threshold" %></td></tr>
+    <% end %>
+  </table>
+<% end %>

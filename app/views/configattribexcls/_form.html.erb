@@ -1,0 +1,29 @@
+<%= form_for(@configattribexcl) do |f| %>
+  <% if @configattribexcl.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@configattribexcl.errors.count, "error") %> prohibited this configattribexcl from being saved:</h2>
+
+      <ul>
+      <% @configattribexcl.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :configattrib_id %><br>
+    <%= f.text_field :configattrib_id %>
+  </div>
+  <div class="field">
+    <%= f.label :param1 %><br>
+    <%= f.text_field :param1 %>
+  </div>
+  <div class="field">
+    <%= f.label :excludemonitor %><br>
+    <%= f.text_field :excludemonitor %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
