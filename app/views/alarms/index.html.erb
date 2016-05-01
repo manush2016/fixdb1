@@ -1,15 +1,26 @@
 <h1>Alarms</h1>
+    <table border=1 style="border-collapse:collapse; font size:3px">
+    <tr><td>Database</td><td>Attribite</td><td>Param</td><td>Alarm State</td><td>Breach Value</td><td>Alarm Generated</td></tr>
     <% @configdbs.each do |configdb| %>
       <% configdb.configattribs.each do |configattrib| %>
         <% configattrib.configattribmasters.each do |configattribmaster| %>
-        <% alarm=configattrib.alarms.where("configattrib_id=? and alarm_component=? and flag=?",configattribmaster.configattrib_id,configattribmaster.param1,'N').order("DESC :alarm_time").limit(1) %>
-          <% if alarm.count>0 %>
-            <% alarm.each do |alar| %>
-            <%= configdb.id.to_s+" "+configdb.location+" "+configattrib.id.to_s+" "+configattrib.attribute_name+" "+configattribmaster.id.to_s+" "+configattribmaster.param1 %><br />
-            <%= alar.alarm_component %>
+        
+        <% alarm=Alarm.where("configattrib_id=? and alarm_component=? and flag=? and alarm_state!=?",configattribmaster.configattrib_id,configattribmaster.param1,'N',"GREEN1").order("alarm_time DESC").limit(1) %>
+        <% if alarm.count>0 %>
+            <% configdb.id.to_s+" "+configdb.location+" "+configattrib.id.to_s+" "+configattrib.attribute_name+" "+configattribmaster.id.to_s+" "+configattribmaster.param1+" "+alarm.pluck(:alarm_time)[0].to_s+" "+alarm.pluck(:alarm_state)[0]+" "+alarm.pluck(:alarm_value)[0] %>
+            <tr><td><%= configdb.location %></td><td><%= configattrib.attribute_name %></td><td><%= configattribmaster.param1 %></td><td>
+            <% if alarm.pluck(:alarm_state)[0]=="Critical" %>
+              <%= image_tag "red.png" %>
+              <% else if alarm.pluck(:alarm_state)[0]=="Warning" %>
+                <%= image_tag "yellow.jpg" %>
+              <% else %>
+                <%= image_tag "tick.png" %>
+              <% end %>
             <% end %>
+            </td><td><%= alarm.pluck(:alarm_value)[0] %></td><td><%= alarm.pluck(:alarm_time)[0].to_s %></td></tr>
           <% end %>
         <% end %>
       <% end %>
     <% end %>
+    </table>
 <%= link_to 'Back', configattribs_path %>

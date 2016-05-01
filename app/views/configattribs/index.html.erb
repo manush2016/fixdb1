@@ -1,5 +1,7 @@
+Bytemend.com
 <h1>Monitoring Configuration</h1>
 
+<%= link_to "Alarms", alarms_path %>
 <div class="acidjs-css3-treeview">
   <ul>
     <% i=0 %>
@@ -43,16 +45,32 @@
                     <label><input type="checkbox" checked "/>
                     </label>
                  <% if configdb.monitor=="Y" && configattrib.monitor=="Y" && (excludemonitor=="N" || excludemonitor==nil) %>
-                    
                     <%= image_tag "tick.png" %>
                   <% else %>
                     <%= image_tag "notick.png" %>
                   <% end %>
+
                   <% if tcount==0 %>  
                     <%= link_to configattribmaster.param1, new_configattribincl_path(:configdb_id => configattribmaster.configdb_id,  :configattrib_id => configattribmaster.configattrib_id, :param1 => configattribmaster.param1) %>
                   <% else %>
-                    <%= link_to configattribmaster.param1, edit_configattribincl_path(:id => id, :configattrib_id => configattribmaster.configattrib_id, :param1 => configattribmaster.param1) %> 
+                    <%= link_to configattribmaster.param1, edit_configattribincl_path(:id => id, :configattrib_id => configattribmaster.configattrib_id, :param1 => configattribmaster.param1) %>
                   <% end %>
+
+                  <% if configdb.monitor=="Y" && configattrib.monitor=="Y" && (excludemonitor=="N" || excludemonitor==nil) %>
+                    <% alarm=Alarm.where("configattrib_id=? and alarm_component=? and flag=? and alarm_state!=?",configattribmaster.configattrib_id,configattribmaster.param1,'N',"GREEN1").order("alarm_time DESC").limit(1) %>
+                      <% if(alarm.count>0) %>
+                        <% if alarm.pluck(:alarm_state)[0]=="Critical" %>
+                          | <%= image_tag "red.png" %>
+                          <% else if alarm.pluck(:alarm_state)[0]=="Warning" %>
+                            | <%= image_tag "yellow.jpg" %>
+                          <% else %>
+                            <% image_tag "tick.png" %>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                  <% else %>
+                  <% end %>
+
                   <% k+=1 %>
                 <% end %>
               </ul>
