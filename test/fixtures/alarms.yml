@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  configdb_id: 
+  configattrib_id: 
+  alarm_time: 2016-05-01 00:34:19
+  alarm_state: MyString
+  alarm_component: MyString
+  alarm_value: MyString
+  flag: MyString
+
+two:
+  configdb_id: 
+  configattrib_id: 
+  alarm_time: 2016-05-01 00:34:19
+  alarm_state: MyString
+  alarm_component: MyString
+  alarm_value: MyString
+  flag: MyString

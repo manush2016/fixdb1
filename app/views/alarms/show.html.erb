@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Configdb:</strong>
+  <%= @alarm.configdb %>
+</p>
+
+<p>
+  <strong>Configattrib:</strong>
+  <%= @alarm.configattrib %>
+</p>
+
+<p>
+  <strong>Alarm time:</strong>
+  <%= @alarm.alarm_time %>
+</p>
+
+<p>
+  <strong>Alarm state:</strong>
+  <%= @alarm.alarm_state %>
+</p>
+
+<p>
+  <strong>Alarm component:</strong>
+  <%= @alarm.alarm_component %>
+</p>
+
+<p>
+  <strong>Alarm value:</strong>
+  <%= @alarm.alarm_value %>
+</p>
+
+<p>
+  <strong>Flag:</strong>
+  <%= @alarm.flag %>
+</p>
+
+<%= link_to 'Edit', edit_alarm_path(@alarm) %> |
+<%= link_to 'Back', alarms_path %>

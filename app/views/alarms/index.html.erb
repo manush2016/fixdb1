@@ -1,0 +1,15 @@
+<h1>Alarms</h1>
+    <% @configdbs.each do |configdb| %>
+      <% configdb.configattribs.each do |configattrib| %>
+        <% configattrib.configattribmasters.each do |configattribmaster| %>
+        <% alarm=configattrib.alarms.where("configattrib_id=? and alarm_component=? and flag=?",configattribmaster.configattrib_id,configattribmaster.param1,'N').order("DESC :alarm_time").limit(1) %>
+          <% if alarm.count>0 %>
+            <% alarm.each do |alar| %>
+            <%= configdb.id.to_s+" "+configdb.location+" "+configattrib.id.to_s+" "+configattrib.attribute_name+" "+configattribmaster.id.to_s+" "+configattribmaster.param1 %><br />
+            <%= alar.alarm_component %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+<%= link_to 'Back', configattribs_path %>

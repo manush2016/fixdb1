@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :alarms
+  resources :alarms
   resources :configattribincls
   resources :configattribexcls
   resources :configattribdetails

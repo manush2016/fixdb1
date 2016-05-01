@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429164806) do
+ActiveRecord::Schema.define(version: 20160430190419) do
+
+  create_table "alarms", force: :cascade do |t|
+    t.integer  "configdb_id",     limit: 4
+    t.integer  "configattrib_id", limit: 4
+    t.datetime "alarm_time"
+    t.string   "alarm_state",     limit: 20
+    t.string   "alarm_component", limit: 100
+    t.string   "alarm_value",     limit: 20
+    t.string   "flag",            limit: 1
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "alarms", ["configattrib_id"], name: "index_alarms_on_configattrib_id", using: :btree
+  add_index "alarms", ["configdb_id"], name: "index_alarms_on_configdb_id", using: :btree
 
   create_table "configattribdetails", force: :cascade do |t|
     t.integer  "configattrib_id", limit: 4
@@ -60,9 +75,8 @@ ActiveRecord::Schema.define(version: 20160429164806) do
     t.string   "notified",        limit: 1
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.integer  "configdb_id",     limit: 4
   end
-
-  add_index "configattribmasters", ["configattrib_id"], name: "index_configattribmasters_on_configattrib_id", using: :btree
 
   create_table "configattribs", force: :cascade do |t|
     t.integer  "configdb_id",       limit: 4
@@ -92,9 +106,10 @@ ActiveRecord::Schema.define(version: 20160429164806) do
 
   add_index "configdbs", ["location"], name: "index_configdbs_on_location", unique: true, using: :btree
 
+  add_foreign_key "alarms", "configattribs"
+  add_foreign_key "alarms", "configdbs"
   add_foreign_key "configattribdetails", "configattribs"
   add_foreign_key "configattribexcls", "configattribs"
   add_foreign_key "configattribincls", "configattribs"
-  add_foreign_key "configattribmasters", "configattribs"
   add_foreign_key "configattribs", "configdbs"
 end
